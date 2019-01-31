@@ -5,6 +5,11 @@
  */
 package mb_version_3;
 
+import control.InsertarPlan;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author usuario
@@ -14,8 +19,17 @@ public class PlanesPanel extends javax.swing.JPanel {
     /**
      * Creates new form PlanesPanel
      */
-    public PlanesPanel() {
+     public PlanesPanel() throws IOException {
         initComponents();
+        InsertarPlan ip= new InsertarPlan();
+        ArrayList<String[]> plans = ip.returnPlans();
+        
+        DefaultListModel model = new DefaultListModel();
+        for(int i=0;i<plans.get(0).length;i++){
+            model.addElement(plans.get(0)[i]);
+        }
+        this.jList1.setModel(model);
+        
     }
 
     /**
